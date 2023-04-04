@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Check_box_inactif_account</fullName>
+        <field>Inactif__c</field>
+        <literalValue>1</literalValue>
+        <name>Check box inactif account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Check_inactif_account</fullName>
+        <field>Inactif__c</field>
+        <literalValue>1</literalValue>
+        <name>Check inactif account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>GDPR_check</fullName>
+        <description>when a administrateur GDPR create an account, checkbox field GDPR is on true</description>
+        <field>GDPR__c</field>
+        <literalValue>1</literalValue>
+        <name>GDPR check</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Update_Owner</fullName>
+        <field>OwnerId</field>
+        <lookupValue>yassine.bouaoun@tessi.fr</lookupValue>
+        <lookupValueType>User</lookupValueType>
+        <name>Update_Owner</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>LookupValue</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>When_offer_create_tag_field_in_account</fullName>
+        <field>GDPR__c</field>
+        <literalValue>1</literalValue>
+        <name>When offer create tag field in account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>check</fullName>
+        <field>Inactif__c</field>
+        <literalValue>1</literalValue>
+        <name>check</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Flague account</fullName>
+        <active>false</active>
+        <formula>recap_last_prestation__c  &lt;=  TODAY()</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>check</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Account.recap_last_prestation__c</offsetFromField>
+            <timeLength>365</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Last activity account</fullName>
+        <active>false</active>
+        <formula>LastActivityDate  &lt;=  TODAY()</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Check_inactif_account</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>365</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Update_owner_compte</fullName>
+        <actions>
+            <name>Update_Owner</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.OwnerId</field>
+            <operation>notContain</operation>
+            <value>Tessi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>default owner id tessi admin</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>WF_Account_Old_Client</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Derniere_Activit_Affaire__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>Account.Derniere_Activit_Affaire__c</offsetFromField>
+            <timeLength>730</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

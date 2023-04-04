@@ -1,0 +1,10 @@
+.THIS td {
+    text-align:center;
+    /*border:1px solid black;*/
+}
+
+.THIS table{
+    /*margin:auto;
+    width:100%;*/
+    border:1px solid black;
+}

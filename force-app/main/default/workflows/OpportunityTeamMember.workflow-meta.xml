@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>EA_Assignation_consultant_avant_vente</fullName>
+        <description>Email Alert - Assignation d&apos;un consultant avant-vente</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Pre-Sales Consultant</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_Assignation_consultant_avant_vente</template>
+    </alerts>
+    <alerts>
+        <fullName>EA_Information_owner_Assignation_consultant_avant_vente</fullName>
+        <description>Email Alert - Information Owner Assignation d&apos;un consultant avant-vente</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_Information_Owner_Assignation_consultant_avant_vente</template>
+    </alerts>
+</Workflow>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Alert_Email_Opportunity_Team_100</fullName>
+        <description>Alert Email - Opportunity Team 100</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Pre-Sales Consultant</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_Opportunity_Team_100</template>
+    </alerts>
+    <alerts>
+        <fullName>Alert_email_opportunity_team</fullName>
+        <description>Alert email opportunity team</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>Account Manager</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Channel Manager</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Executive Sponsor</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Lead Qualifier</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Opportunity Owner</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Pre-Sales Consultant</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Sales Manager</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <recipients>
+            <recipient>Sales Rep</recipient>
+            <type>opportunityTeam</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_opportunity_team</template>
+    </alerts>
+    <alerts>
+        <fullName>Email_when_stage_reach_100_for_TDS_Profile</fullName>
+        <description>Email when stage reach 100% for TDS Profile</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alerte_Closed_won</template>
+    </alerts>
+    <alerts>
+        <fullName>test_opportunity_100</fullName>
+        <description>test opportunity 100%</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>thierry.trouin@tessi.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_Opportunity_Team_100</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Account_GDPR</fullName>
+        <field>GDPR__c</field>
+        <literalValue>1</literalValue>
+        <name>Account GDPR</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>AccountId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Close_date</fullName>
+        <field>CloseDate</field>
+        <formula>TODAY()</formula>
+        <name>Close date</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>DateSignature</fullName>
+        <field>DateSignature__c</field>
+        <formula>TODAY()</formula>
+        <name>DateSignature</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Pooulate_Amount</fullName>
+        <field>Amount</field>
+        <formula>Budget_CA_global__c</formula>
+        <name>Pooulate_Amount</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>field_account_incatif</fullName>
+        <field>Inactif__c</field>
+        <literalValue>1</literalValue>
+        <name>field account incatif</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>AccountId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>inactif_account</fullName>
+        <field>Inactif__c</field>
+        <literalValue>1</literalValue>
+        <name>inactif account</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>AccountId</targetObject>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>need_for_presale_date_checked</fullName>
+        <field>need_for_presales_checked__c</field>
+        <formula>NOW()</formula>
+        <name>need for presale date checked</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Alert - Email Opportunity Team 100</fullName>
+        <actions>
+            <name>Alert_Email_Opportunity_Team_100</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Probability</field>
+            <operation>greaterOrEqual</operation>
+            <value>100</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Need_PreSales__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>100%</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Alert email Opportunity team</fullName>
+        <actions>
+            <name>Alert_email_opportunity_team</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.Probability</field>
+            <operation>greaterOrEqual</operation>
+            <value>30</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Need_PreSales__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Alerte Closed won</fullName>
+        <active>true</active>
+        <formula>AND(
+ ISCHANGED( StageName),
+ ISPICKVAL( StageName , &quot;Signée&quot;) 
+)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Close date update</fullName>
+        <actions>
+            <name>Close_date</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Perdue</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Date de signature</fullName>
+        <actions>
+            <name>DateSignature</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Opportunity.StageName</field>
+            <operation>equals</operation>
+            <value>Signée</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>Opportunity.LastModifiedDate</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>need for presale date checked</fullName>
+        <actions>
+            <name>need_for_presale_date_checked</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Need_PreSales__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>populate_Amount</fullName>
+        <actions>
+            <name>Pooulate_Amount</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Opportunity.Budget_CA_global__c</field>
+            <operation>greaterOrEqual</operation>
+            <value>EUR 0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

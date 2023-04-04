@@ -1,0 +1,13 @@
+<aura:component >
+<body>
+    <!--
+	<img src="https://tessi- -c.eu6.content.force.com/servlet/servlet.FileDownload?file=015580000033nzq" alt="accueil" style="margin:auto;width:100%" />
+    <img src="https://c.eu6.content.force.com/servlet/servlet.FileDownload?file=015580000033nzq" alt="accueil" style="margin:auto;width:100%" />
+	<img src="/dpo-by-tessi/resource/1516981651000/background_Community" alt="accueil" style="margin:auto;width:100%" />
+    
+    <img src="/support/resource/1516981651000/background_Community" alt="accueil" style="margin:auto;width:100%" />
+    <img src="https://tessi- -c.eu6.visual.force.com/resource/1516981651000/background_Community" alt="accueil" style="margin:auto;width:100%" />
+-->
+    <img src="/resource/1516981651000/background_Community" alt="accueil" style="margin:auto;width:100%" />
+</body>	
+</aura:component>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Tessi_Sign_Prestation</fullName>
+        <description>Tessi Sign Prestation</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>benedicte.noel@tessi.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>francois.quais@tessi.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <recipients>
+            <recipient>thierry.caye@tessi.fr</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Alert_Prestation_Tessi_Sign</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>Delivery_Cost_Date_in_Opp</fullName>
+        <field>Delivery_Cost_Date__c</field>
+        <formula>TODAY()</formula>
+        <name>Delivery Cost Date in Opp</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Opportunite__c</targetObject>
+    </fieldUpdates>
+    <rules>
+        <fullName>Chiffrage de prestation</fullName>
+        <actions>
+            <name>Delivery_Cost_Date_in_Opp</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Prestation__c.CA_Annuel__c</field>
+            <operation>greaterThan</operation>
+            <value>EUR 0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Opportunity.Delivery_Cost_Date__c</field>
+            <operation>equals</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Link Prestation Date in Opportunity</fullName>
+        <active>false</active>
+        <criteriaItems>
+            <field>Prestation__c.FirstMonth__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>TessiSign_prestation_created</fullName>
+        <actions>
+            <name>Tessi_Sign_Prestation</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Prestation__c.Type_de_prestation__c</field>
+            <operation>equals</operation>
+            <value>Tessi Sign</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ByPass_Process__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+</Workflow>

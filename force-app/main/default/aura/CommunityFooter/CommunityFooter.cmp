@@ -1,0 +1,23 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes">
+	<table width="100%">
+    	<tr>
+        	<td colspan="4">ligne 1</td>
+        </tr>
+        <tr>
+        	<td><a href="#">Col 1</a></td>
+            <td><a href="#">Col 2</a></td>
+            <td><a href="#">Col 3</a></td>
+            <td><a href="#">Col 4</a></td>
+        </tr>
+        <tr>
+        	<td>ligne 2 - Col 1</td>
+            <td>ligne 2 - Col 2</td>
+            <td>ligne 2 - Col 3</td>
+            <td>ligne 2 - Col 4</td>
+        </tr>
+        <tr>
+            <td colspan="2"><a href="#"><img src="img.jpg" width="25px" height="25px" alt="Logo ABC" /></a></td>
+            <td colspan="2"><a href="#"><img src="img.jpg" width="25px" height="25px" alt="Logo XYZ" /></a></td>
+        </tr>
+    </table>
+</aura:component>
