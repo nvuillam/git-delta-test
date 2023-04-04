@@ -1,5 +1,7 @@
 Demo repo to reproduce https://github.com/scolladon/sfdx-git-delta/issues/548
 
+Clone the repo, pull master, integration and init-ci branches, then run the following commands
+
 ```shell
 echo y | sfdx plugins:install sfdx-git-delta@latest-rc
 echo y | sfdx plugins:install sfdx-hardis
